@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
+const PORT = 80;
 
 // Serve static files (including admin.html)
 app.use(express.static(__dirname));
@@ -17,7 +17,7 @@ console.log('📁 Responses file path:', RESPONSES_FILE);
 
 // Enhanced CORS configuration
 app.use(cors({
-    origin: ['http://localhost:5500', 'http://127.0.0.1:5500', 'http://localhost:3000', 'file://'],
+    origin: ['http://localhost:5500', 'http://127.0.0.1:5500', 'http://localhost:3000', 'file://','http://192.168.29.223','http://192.168.29.223:80'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type'],
     credentials: true

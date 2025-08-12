@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Survey Management</title>
     <link rel="stylesheet" href="admin.css">
+    <!-- Include the configuration file -->
+    <script src="config.js"></script>
 </head>
 <body>
     <div class="container">
@@ -127,7 +129,7 @@
         // Load survey data from server
         async function loadSurveyData() {
             try {
-                const response = await fetch('http://localhost:3000/api/data');
+                const response = await fetch(CONFIG.URLS.DATA);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -144,7 +146,7 @@
         // Load survey responses from server
         async function loadSurveyResponses() {
             try {
-                const response = await fetch('http://localhost:3000/api/survey-responses');
+                const response = await fetch(CONFIG.URLS.SURVEY_RESPONSES);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -161,7 +163,7 @@
         // Delete survey response from server
         async function deleteSurveyResponseFromServer(id) {
             try {
-                const response = await fetch(`http://localhost:3000/api/survey-responses/${id}`, {
+                const response = await fetch(CONFIG.URLS.SURVEY_RESPONSE_BY_ID(id), {
                     method: 'DELETE'
                 });
 
@@ -185,8 +187,8 @@
         async function saveQuestionToServer(question) {
             try {
                 const url = editingQuestion ? 
-                    `http://localhost:3000/api/questions/${editingQuestion.id}` : 
-                    'http://localhost:3000/api/questions';
+                    CONFIG.URLS.QUESTION_BY_ID(editingQuestion.id) : 
+                    CONFIG.URLS.QUESTIONS;
                 
                 const method = editingQuestion ? 'PUT' : 'POST';
                 
@@ -225,7 +227,7 @@
         // Delete question from server
         async function deleteQuestionFromServer(id) {
             try {
-                const response = await fetch(`http://localhost:3000/api/questions/${id}`, {
+                const response = await fetch(CONFIG.URLS.QUESTION_BY_ID(id), {
                     method: 'DELETE'
                 });
 
@@ -247,7 +249,7 @@
         // Delete multiple questions
         async function deleteQuestionsFromServer(ids) {
             try {
-                const response = await fetch('http://localhost:3000/api/questions', {
+                const response = await fetch(CONFIG.URLS.QUESTIONS, {
                     method: 'DELETE',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ ids })
@@ -271,7 +273,7 @@
         // Save response to server
         async function saveResponseToServer(range, responseText) {
             try {
-                const response = await fetch('http://localhost:3000/api/responses', {
+                const response = await fetch(CONFIG.URLS.RESPONSES, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ [range]: responseText })
@@ -559,97 +561,96 @@
         }
 
         function renderSurveyResponses() {
-                const container = document.getElementById('surveyResponsesList');
+            const container = document.getElementById('surveyResponsesList');
 
-                if (filteredResponses.length === 0) {
-                    container.innerHTML = '<p class="empty-state">No survey responses found.</p>';
-                    return;
-                }
+            if (filteredResponses.length === 0) {
+                container.innerHTML = '<p class="empty-state">No survey responses found.</p>';
+                return;
+            }
 
-                container.innerHTML = filteredResponses.map(response => `
-                    <div class="survey-response-card" data-id="${response.id}">
-                        <div class="response-header" role="button" tabindex="0" aria-expanded="false">
-                            <div class="user-info">
-                                <h3>${escapeHtml(response.userData.name)}</h3>
-                                <p>Email: ${escapeHtml(response.userData.email)}</p>
-                                <p>Employee ID: ${escapeHtml(response.userData.employeeId)}</p>
-                                <p>Submitted: ${escapeHtml(response.submittedAt)}</p>
-                            </div>
-                            <div class="score-info">
-                                <div class="score-badge score-${getScoreRange(response.percentage).replace('-', '_')}">
-                                    ${response.percentage}%
-                                </div>
-                                <p>Score: ${response.totalScore}/${(response.answers || []).length * 5}</p>
-                                <button onclick="deleteSurveyResponse(${response.id})" class="delete-btn">Delete</button>
-                            </div>
+            container.innerHTML = filteredResponses.map(response => `
+                <div class="survey-response-card" data-id="${response.id}">
+                    <div class="response-header" role="button" tabindex="0" aria-expanded="false">
+                        <div class="user-info">
+                            <h3>${escapeHtml(response.userData.name)}</h3>
+                            <p>Email: ${escapeHtml(response.userData.email)}</p>
+                            <p>Employee ID: ${escapeHtml(response.userData.employeeId)}</p>
+                            <p>Submitted: ${escapeHtml(response.submittedAt)}</p>
                         </div>
-
-                        <div class="answers-section">
-                            <h4>Responses:</h4>
-                            <div class="answers-list">
-                                ${(response.answers || []).map((answer, index) => `
-                                    <div class="answer-item">
-                                        <div class="question-text"><strong>Q${index + 1}:</strong> ${escapeHtml(answer.questionText)}</div>
-                                        <div class="answer-text">
-                                            <span class="answer-option">${escapeHtml(answer.selectedOptionText)}</span>
-                                            <span class="answer-score">(${answer.score} pts)</span>
-                                        </div>
-                                    </div>
-                                `).join('')}
+                        <div class="score-info">
+                            <div class="score-badge score-${getScoreRange(response.percentage).replace('-', '_')}">
+                                ${response.percentage}%
                             </div>
+                            <p>Score: ${response.totalScore}/${(response.answers || []).length * 5}</p>
+                            <button onclick="deleteSurveyResponse(${response.id})" class="delete-btn">Delete</button>
                         </div>
                     </div>
-                `).join('');
 
-                // attach accordion behavior after DOM is updated
-                addAccordionListeners();
-            }
+                    <div class="answers-section">
+                        <h4>Responses:</h4>
+                        <div class="answers-list">
+                            ${(response.answers || []).map((answer, index) => `
+                                <div class="answer-item">
+                                    <div class="question-text"><strong>Q${index + 1}:</strong> ${escapeHtml(answer.questionText)}</div>
+                                    <div class="answer-text">
+                                        <span class="answer-option">${escapeHtml(answer.selectedOptionText)}</span>
+                                        <span class="answer-score">(${answer.score} pts)</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
 
-            // helper to add click + keyboard listeners to response headers
-            function addAccordionListeners() {
-                document.querySelectorAll('.survey-response-card .response-header').forEach(header => {
-                    // remove any existing handler to avoid duplicates
-                    if (header._accordionHandler) {
-                        header.removeEventListener('click', header._accordionHandler);
-                        header.removeEventListener('keydown', header._accordionKeyHandler);
+            // attach accordion behavior after DOM is updated
+            addAccordionListeners();
+        }
+
+        // helper to add click + keyboard listeners to response headers
+        function addAccordionListeners() {
+            document.querySelectorAll('.survey-response-card .response-header').forEach(header => {
+                // remove any existing handler to avoid duplicates
+                if (header._accordionHandler) {
+                    header.removeEventListener('click', header._accordionHandler);
+                    header.removeEventListener('keydown', header._accordionKeyHandler);
+                }
+
+                const clickHandler = (e) => {
+                    // don't toggle when clicking the internal delete button or its children
+                    if (e.target.closest('.delete-btn')) return;
+
+                    const card = header.closest('.survey-response-card');
+                    const expanded = card.classList.toggle('expanded');
+                    header.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                };
+
+                const keyHandler = (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        clickHandler(e);
                     }
+                };
 
-                    const clickHandler = (e) => {
-                        // don't toggle when clicking the internal delete button or its children
-                        if (e.target.closest('.delete-btn')) return;
+                // store references so we can remove later if needed
+                header._accordionHandler = clickHandler;
+                header._accordionKeyHandler = keyHandler;
 
-                        const card = header.closest('.survey-response-card');
-                        const expanded = card.classList.toggle('expanded');
-                        header.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-                    };
+                header.addEventListener('click', clickHandler);
+                header.addEventListener('keydown', keyHandler);
+            });
+        }
 
-                    const keyHandler = (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            clickHandler(e);
-                        }
-                    };
-
-                    // store references so we can remove later if needed
-                    header._accordionHandler = clickHandler;
-                    header._accordionKeyHandler = keyHandler;
-
-                    header.addEventListener('click', clickHandler);
-                    header.addEventListener('keydown', keyHandler);
-                });
-            }
-
-            // small HTML-escape helper to avoid injection when using template strings
-            function escapeHtml(str) {
-                if (str === undefined || str === null) return '';
-                return String(str)
-                .replaceAll('&', '&amp;')
-                .replaceAll('<', '&lt;')
-                .replaceAll('>', '&gt;')
-                .replaceAll('"', '&quot;')
-                .replaceAll("'", '&#39;');
-            }
-
+        // small HTML-escape helper to avoid injection when using template strings
+        function escapeHtml(str) {
+            if (str === undefined || str === null) return '';
+            return String(str)
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#39;');
+        }
 
         function updateStats() {
             const totalElement = document.getElementById('totalResponses');
