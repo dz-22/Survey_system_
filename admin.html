@@ -358,7 +358,7 @@
                 return;
             }
 
-            const headers = ['Name', 'Email', 'Employee ID', 'Submission Date', 'Total Score', 'Percentage', 'Score Range'];
+            const headers = ['Name', 'Email', 'Employee ID', 'Submission Date', 'Total Score', 'Percentage'];
             
             
 
@@ -371,8 +371,7 @@
                         `"${response.userData.employeeId}"`,
                         `"${response.submittedAt}"`,
                         response.totalScore,
-                        `${response.percentage}%`,
-                        getScoreRange(response.percentage)
+                        `${response.percentage}%`
                     ];
                 
                     
@@ -727,3 +726,4 @@
 </body>
 
 </html>
+
