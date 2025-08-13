@@ -360,12 +360,7 @@
 
             const headers = ['Name', 'Email', 'Employee ID', 'Submission Date', 'Total Score', 'Percentage', 'Score Range'];
             
-            // Add question headers
-            if (surveyData.questions.length > 0) {
-                surveyData.questions.forEach((q, index) => {
-                    headers.push(`Q${index + 1}: ${q.text.substring(0, 50)}...`);
-                });
-            }
+            
 
             const csvContent = [
                 headers.join(','),
@@ -379,13 +374,7 @@
                         `${response.percentage}%`,
                         getScoreRange(response.percentage)
                     ];
-                    
-                    // Add answers
-                    if (response.answers) {
-                        response.answers.forEach(answer => {
-                            row.push(`"${answer.selectedOptionText}"`);
-                        });
-                    }
+                
                     
                     return row.join(',');
                 })
@@ -736,4 +725,5 @@
         }
     </script>
 </body>
+
 </html>
