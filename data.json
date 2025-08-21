@@ -167,10 +167,9 @@
     }
   ],
   "responses": {
-    "1-20": "Minimal Self-Awareness: The results suggest minimal awareness of potential interviewing biases and patterns. This may significantly impact the objectivity and effectiveness of your interviews. Strong focus on bias awareness training and structured interviewing techniques is recommended.",
-    "21-40": "Limited Self-Awareness: You may have limited awareness of potential biases and patterns in your interviewing approach. This could impact the consistency and fairness of your evaluations. Consider focusing on developing greater self-reflection and awareness of your interviewing habits.Good Self-Awareness: You show solid awareness of your interviewing patterns and potential biases. This awareness is a valuable asset that likely helps you conduct more balanced and fair interviews while maintaining some consistency in your approach.",
-    "41-60": "Moderate Self-Awareness: You have some awareness of your interviewing tendencies, with room for improvement. Consider developing more conscious awareness of your patterns and biases to enhance your interviewing effectiveness and ensure fair evaluation of all candidates.",
-    "61-80": "Good Self-Awareness: You show solid awareness of your interviewing patterns and potential biases. This awareness is a valuable asset that likely helps you conduct more balanced and fair interviews while maintaining some consistency in your approach.",
-    "81-100": "Strong Self-Awareness: You demonstrate excellent awareness of potential biases and interviewing tendencies. This high level of self-reflection suggests you're likely conducting more objective and effective interviews by actively managing your natural inclinations."
+    "21-40": "High Risk of Bias: You may be making decisions too early, relying on impressions, or letting biases guide the process. Training and structured interview frameworks are recommended.",
+    "41-60": "Needs Improvement: Your interviewing approach shows patterns of bias or rigidity. Focus on being more adaptable, delaying judgments, and broadening questioning. ",
+    "61-80": "Balanced, but watch for biases: You demonstrate many good interviewing habits, but certain unconscious biases may still influence your decision-making.",
+    "81-100": "Excellent Interviewer: You demonstrate many good interviewing habits, but certain unconscious biases may still influence your decision-making."
   }
 }
