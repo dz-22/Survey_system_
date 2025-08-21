@@ -37,33 +37,33 @@
       "id": 4,
       "text": "My attention is drawn to responses that align with what I anticipated.",
       "options": [
-        { "text": "Strongly aligns with me", "score": 5 },
-        { "text": "Somewhat aligns with me", "score": 4 },
+        { "text": "Strongly aligns with me", "score": 1 },
+        { "text": "Somewhat aligns with me", "score": 2 },
         { "text": "Neutral or unsure", "score": 3 },
-        { "text": "Somewhat misaligned with me", "score": 2 },
-        { "text": "Strongly misaligned with me", "score": 1 }
+        { "text": "Somewhat misaligned with me", "score": 4 },
+        { "text": "Strongly misaligned with me", "score": 5 }
       ]
     },
     {
       "id": 5,
       "text": "The resume usually sets the boundaries of my questioning.",
       "options": [
-        { "text": "Strongly aligns with me", "score": 5 },
-        { "text": "Somewhat aligns with me", "score": 4 },
+        { "text": "Strongly aligns with me", "score": 1 },
+        { "text": "Somewhat aligns with me", "score": 2 },
         { "text": "Neutral or unsure", "score": 3 },
-        { "text": "Somewhat misaligned with me", "score": 2 },
-        { "text": "Strongly misaligned with me", "score": 1 }
+        { "text": "Somewhat misaligned with me", "score": 4 },
+        { "text": "Strongly misaligned with me", "score": 5 }
       ]
     },
     {
       "id": 6,
       "text": "Once I sense a candidate's potential, I notice I interpret later answers through that lens.",
       "options": [
-        { "text": "Strongly aligns with me", "score": 5 },
-        { "text": "Somewhat aligns with me", "score": 4 },
+        { "text": "Strongly aligns with me", "score": 1 },
+        { "text": "Somewhat aligns with me", "score": 2 },
         { "text": "Neutral or unsure", "score": 3 },
-        { "text": "Somewhat misaligned with me", "score": 2 },
-        { "text": "Strongly misaligned with me", "score": 1 }
+        { "text": "Somewhat misaligned with me", "score": 4 },
+        { "text": "Strongly misaligned with me", "score": 5 }
       ]
     },
     {
@@ -81,11 +81,11 @@
       "id": 8,
       "text": "I subconsciously draw on patterns from past interviews to interpret responses.",
       "options": [
-        { "text": "Strongly aligns with me", "score": 5 },
-        { "text": "Somewhat aligns with me", "score": 4 },
+        { "text": "Strongly aligns with me", "score": 1 },
+        { "text": "Somewhat aligns with me", "score": 2 },
         { "text": "Neutral or unsure", "score": 3 },
-        { "text": "Somewhat misaligned with me", "score": 2 },
-        { "text": "Strongly misaligned with me", "score": 1 }
+        { "text": "Somewhat misaligned with me", "score": 4 },
+        { "text": "Strongly misaligned with me", "score": 5 }
       ]
     },
     {
@@ -125,22 +125,22 @@
       "id": 12,
       "text": "Interviews that begin smoothly tend to leave a stronger impression on me.",
       "options": [
-        { "text": "Strongly aligns with me", "score": 5 },
-        { "text": "Somewhat aligns with me", "score": 4 },
+        { "text": "Strongly aligns with me", "score": 1 },
+        { "text": "Somewhat aligns with me", "score": 2 },
         { "text": "Neutral or unsure", "score": 3 },
-        { "text": "Somewhat misaligned with me", "score": 2 },
-        { "text": "Strongly misaligned with me", "score": 1 }
+        { "text": "Somewhat misaligned with me", "score": 4 },
+        { "text": "Strongly misaligned with me", "score": 5 }
       ]
     },
     {
       "id": 13,
       "text": "If an interview feels effortless, I usually assume the candidate is a good fit.",
       "options": [
-        { "text": "Strongly aligns with me", "score": 5 },
-        { "text": "Somewhat aligns with me", "score": 4 },
+        { "text": "Strongly aligns with me", "score": 1 },
+        { "text": "Somewhat aligns with me", "score": 2 },
         { "text": "Neutral or unsure", "score": 3 },
-        { "text": "Somewhat misaligned with me", "score": 2 },
-        { "text": "Strongly misaligned with me", "score": 1 }
+        { "text": "Somewhat misaligned with me", "score": 4 },
+        { "text": "Strongly misaligned with me", "score": 5 }
       ]
     },
     {
@@ -158,11 +158,11 @@
       "id": 15,
       "text": "I usually arrive at a decision about a candidate before all interviews are complete.",
       "options": [
-        { "text": "Strongly aligns with me", "score": 5 },
-        { "text": "Somewhat aligns with me", "score": 4 },
+        { "text": "Strongly aligns with me", "score": 1 },
+        { "text": "Somewhat aligns with me", "score": 2 },
         { "text": "Neutral or unsure", "score": 3 },
-        { "text": "Somewhat misaligned with me", "score": 2 },
-        { "text": "Strongly misaligned with me", "score": 1 }
+        { "text": "Somewhat misaligned with me", "score": 4 },
+        { "text": "Strongly misaligned with me", "score": 5 }
       ]
     }
   ],
