@@ -87,7 +87,6 @@
                     <input type="text" id="searchFilter" placeholder="Search by name, email, or employee ID...">
                     <select id="scoreFilter">
                         <option value="">All Score Ranges</option>
-                        <option value="1-20">1-20%</option>
                         <option value="21-40">21-40%</option>
                         <option value="41-60">41-60%</option>
                         <option value="61-80">61-80%</option>
@@ -531,7 +530,7 @@
 
         function renderResponses() {
             const container = document.getElementById('responsesList');
-            const ranges = ['1-20', '21-40', '41-60', '61-80', '81-100'];
+            const ranges = ['21-40', '41-60', '61-80', '81-100'];
             
             container.innerHTML = ranges.map(range => `
                 <div class="response-item">
@@ -726,4 +725,5 @@
 </body>
 
 </html>
+
 
