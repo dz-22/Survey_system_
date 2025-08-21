@@ -293,8 +293,8 @@
 
                 // Determine response key
                 let responseKey;
-                if (percentage <= 20) responseKey = "1-20";
-                else if (percentage <= 40) responseKey = "21-40";
+                
+                if (percentage <= 40) responseKey = "21-40";
                 else if (percentage <= 60) responseKey = "41-60";
                 else if (percentage <= 80) responseKey = "61-80";
                 else responseKey = "81-100";
@@ -353,4 +353,5 @@
         });
     </script>
 </body>
+
 </html>
